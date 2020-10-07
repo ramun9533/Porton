@@ -1,5 +1,5 @@
-#include <SoftwareSerial.h>//Se puede emular mas de un puerto serial
-SoftwareSerial BTSerial(10,11); // RX | TX Poner los pines que usas 
+#include <SoftwareSerial.h>   //Se puede emular mas de un puerto serial
+SoftwareSerial BTSerial(10,11);	 // RX | TX Poner los pines que usas 
   char data = 0;
 int arranque=0; 
 int enclavamiento=0;
