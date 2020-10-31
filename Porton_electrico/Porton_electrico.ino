@@ -23,18 +23,18 @@ void setup () {
   int PinParo = 3;
   pinMode(PinParo, INPUT);
   paro = digitalRead(PinParo);
-  
+
  int Pinreversible = 4;
   pinMode(Pinreversible, INPUT);
-  paro = digitalRead(Pinreversible);
-  
+  reversible = digitalRead(Pinreversible);
+
  int Pinw = 5;
   pinMode(Pinw, INPUT);
-  paro = digitalRead(Pinw);
+  w = digitalRead(Pinw);
 
- 
- 
-  
+
+
+
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
