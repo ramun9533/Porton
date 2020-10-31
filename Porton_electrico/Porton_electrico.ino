@@ -16,10 +16,25 @@ void setup () {
 
   BTSerial.begin(9600);//Inicializar comunicacion
 
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT);
+ int PinArranque = 2;
+  pinMode(PinArranque, INPUT);
+  arranque = digitalRead(PinArranque);
+
+  int PinParo = 3;
+  pinMode(PinParo, INPUT);
+  paro = digitalRead(PinParo);
+  
+ int Pinreversible = 4;
+  pinMode(Pinreversible, INPUT);
+  paro = digitalRead(Pinreversible);
+  
+ int Pinw = 5;
+  pinMode(Pinw, INPUT);
+  paro = digitalRead(Pinw);
+
+ 
+ 
+  
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
