@@ -17,12 +17,12 @@ static unsigned int Pinreversible = 4;
 static unsigned int Pinw = 5;
 static unsigned int Pinestado=7;
 static unsigned int Pinrestado=8;
-
+static unsigned int Pinprot=9;
 void setup () {
 
   BTSerial.begin(9600);//Inicializar comunicacion
 
-  digitalWrite (9, HIGH);
+  digitalWrite (Pinprot, HIGH);
 
   pinMode(PinArranque, INPUT);
   pinMode(PinParo, INPUT);
@@ -30,8 +30,8 @@ void setup () {
   pinMode(Pinw, INPUT);
   pinMode(Pinestado, OUTPUT);
   pinMode(Pinrestado, OUTPUT);
-  pinMode(9, OUTPUT);
-  digitalWrite (9, LOW);
+  pinMode(Pinprot, OUTPUT);
+  digitalWrite (Pinprot, LOW);
   pinMode(Led, OUTPUT);
 
   delay (10);
@@ -73,6 +73,10 @@ void loop () {
   if (estado == HIGH) {
     digitalWrite (Pinestado, LOW);
     digitalWrite (Pinrestado, HIGH);
+    delay (10000);
+
+    digitalWrite (Pinestado, HIGH);
+    digitalWrite (Pinrestado, HIGH);
 
   }
 
@@ -96,6 +100,11 @@ void loop () {
   if (restado == HIGH) {
     digitalWrite (Pinrestado, LOW);
     digitalWrite (Pinestado, HIGH);
+
+    delay (10000);
+
+    digitalWrite (Pinestado, HIGH);
+    digitalWrite (Pinrestado, HIGH);
   }
 
   else {
