@@ -28,13 +28,15 @@ void setup () {
   pinMode(PinParo, INPUT);
   pinMode(Pinreversible, INPUT);
   pinMode(Pinw, INPUT);
-  pinMode(Pinestado, OUTPUT);
-  pinMode(Pinrestado, OUTPUT);
   pinMode(Pinprot, OUTPUT);
-  digitalWrite (Pinprot, LOW);
   pinMode(Led, OUTPUT);
-
-  delay (10);
+ delay (1000);
+  
+digitalWrite (Pinprot, LOW);
+pinMode(Pinestado, OUTPUT);
+  pinMode(Pinrestado, OUTPUT);
+  
+  
 }
 void loop () {
   arranque = digitalRead(PinArranque);
@@ -73,18 +75,23 @@ void loop () {
   if (estado == HIGH) {
     digitalWrite (Pinestado, LOW);
     digitalWrite (Pinrestado, HIGH);
-    delay (10000);
-
-    digitalWrite (Pinestado, HIGH);
-    digitalWrite (Pinrestado, HIGH);
-
-  }
+ delay (10000);
+ estado = 0;
+  } 
+  
+ 
 
   else {
 
     digitalWrite (Pinestado, HIGH);
 
   }
+
+   
+
+    digitalWrite (Pinestado, HIGH);
+    digitalWrite (Pinrestado, HIGH);
+    
   if (paro == HIGH) {
     estado = 0;
     restado = 0;
@@ -100,18 +107,21 @@ void loop () {
   if (restado == HIGH) {
     digitalWrite (Pinrestado, LOW);
     digitalWrite (Pinestado, HIGH);
-
-    delay (10000);
-
-    digitalWrite (Pinestado, HIGH);
-    digitalWrite (Pinrestado, HIGH);
+delay (10000);
+ restado = 0;
   }
+
+  
 
   else {
 
     digitalWrite (Pinrestado, HIGH);
 
   }
+  
+    digitalWrite (Pinestado, HIGH);
+    digitalWrite (Pinrestado, HIGH);
+  
   if (paro == HIGH) {
     digitalWrite (Pinrestado, HIGH);
     digitalWrite (Pinestado, HIGH);
