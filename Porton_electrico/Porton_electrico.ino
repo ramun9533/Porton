@@ -68,7 +68,7 @@ void loop () {
     restado = 0;
   }
 
-  if (estado == HIGH) { // gito "A" con proteccion de timer por si hay atoramiento en porton
+  if (estado == HIGH) { // giro "A" con proteccion de timer por si hay atoramiento en porton
     digitalWrite (Pinestado, LOW);
     digitalWrite (Pinrestado, HIGH);
     delay (10000);
