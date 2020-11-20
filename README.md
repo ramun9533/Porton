@@ -33,6 +33,6 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
 
 ![Alt text](     https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito%20adaptador_de_110VCA_a%20_5_VCD.jpg) 
 
-### Imagen de piezas reales de adaptador de señal
+### Imagen de piezas reales de adaptador de señal digital
 
 ![Alt text](  https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Piezas_reales_de_adaptador_de_voltaje.jpg) 
