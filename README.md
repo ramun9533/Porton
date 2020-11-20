@@ -24,3 +24,7 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
 
  
 ![Alt text](https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito_esquem%C3%A1tico.jpg)
+
+### Esquemático de arreglo de proteccion para evitar accionamiento de ambos giros
+
+  ![Alt text](   https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Detalle_de_tarjeta_de_relevadores.jpg) 
