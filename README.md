@@ -11,11 +11,13 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
  - Fusibles de proteccion para alimentacion general y fuente dual.
  - Tarjeta perforada Proto Shield.
  - Clemas varias de conexion.
- - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones.
-
-
+ - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones
 
 ## contribuidores
 [Ramun](https://github.com/ramun9533)
+
+### Esquema del porton y control.
+
+![Alt text]( https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Untitled%20Sketc_esquem%C3%A1tico.jpg)
  
 
