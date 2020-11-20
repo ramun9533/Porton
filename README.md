@@ -19,5 +19,8 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
 ### Esquema del porton y control.
 
 ![Alt text]( https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Untitled%20Sketc_esquem%C3%A1tico.jpg)
- 
 
+### Esquema de conexiones
+
+ 
+![Alt text](https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito_esquem%C3%A1tico.jpg)
