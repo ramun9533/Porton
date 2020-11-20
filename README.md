@@ -28,3 +28,7 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
 ### Esquemático de arreglo de proteccion para evitar accionamiento de ambos giros al mismo tiempo
 
   ![Alt text](   https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Detalle_de_tarjeta_de_relevadores.jpg) 
+
+### Esquemá de acoplamiento de señales de 110 V. C. A. A 5 V. C. D. 
+
+![Alt text](     https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito%20adaptador_de_110VCA_a%20_5_VCD.jpg) 
