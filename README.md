@@ -36,3 +36,8 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
 ### Imagen de piezas reales de adaptador de señal digital
 
 ![Alt text](  https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Piezas_reales_de_adaptador_de_voltaje.jpg) 
+
+
+### Foto real del proyecto
+
+![Alt text](    https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Foto_reall.jpg) 
