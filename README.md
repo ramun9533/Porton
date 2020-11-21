@@ -12,6 +12,7 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
  - Tarjeta perforada Proto Shield.
  - Clemas varias de conexion.
  - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones
+ - Tarjeta HC 05 bluetooth
 
 ## contribuidores
 [Ramun](https://github.com/ramun9533)
