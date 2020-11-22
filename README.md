@@ -11,11 +11,37 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
  - Fusibles de proteccion para alimentacion general y fuente dual.
  - Tarjeta perforada Proto Shield.
  - Clemas varias de conexion.
- - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones.
-
-
+ - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones
+ - Tarjeta HC 05 bluetooth
 
 ## contribuidores
 [Ramun](https://github.com/ramun9533)
- 
 
+### Esquema del porton y control.
+
+![Alt text]( https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Untitled%20Sketc_esquem%C3%A1tico.jpg)
+
+### Esquema de conexiones electricas
+
+ 
+![Alt text](https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito_esquem%C3%A1tico.jpg)
+
+### Esquemático de arreglo de proteccion para evitar accionamiento de ambos giros al mismo tiempo
+
+  ![Alt text](   https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Detalle_de_tarjeta_de_relevadores.jpg) 
+
+### Esquemá de acoplamiento de señales de 110 V. C. A. A 5 V. C. D. 
+
+![Alt text](     https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Circuito%20adaptador_de_110VCA_a%20_5_VCD.jpg) 
+
+### Imagen de piezas reales de adaptador de señal digital
+
+![Alt text](  https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Piezas_reales_de_adaptador_de_voltaje.jpg) 
+
+
+### Foto real del proyecto
+
+![Alt text](    https://github.com/ramun9533/Porton/blob/master/Porton_electrico/Foto_reall.jpg) 
+
+
+:upside_down_face:	
