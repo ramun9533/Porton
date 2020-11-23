@@ -14,7 +14,7 @@ Proyecto en base a Arduino para sustituir una tarjeta de porton electrico con pr
  - Fotocelda Infrarroja 10m Evita Accidentes Cierre De Portones
  - Tarjeta HC 05 bluetooth
 
-Lista se software usado
+_Lista se software usado_
   - IDE arduino(en PC) 
   - Bluetooth Serial Controller (en cell con android) 
   - Bluetooth Terminal (en cell con android)
