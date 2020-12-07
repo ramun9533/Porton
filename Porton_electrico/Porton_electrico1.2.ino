@@ -1,12 +1,14 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);
-static unsigned int sw1 = 9;
-static unsigned int sw2 = 10;
-static unsigned int externa = 11;
-static unsigned int giro1 = 2 ;
-static unsigned int giro2 = 4 ;
-static unsigned int proteccion =  3;
+static unsigned int sw1 = 2;
+static unsigned int paro = 3;
+static unsigned int sw2 = 4;
+static unsigned int externa = 5;
+static unsigned int giro1 = 7 ;
+static unsigned int giro2 = 8 ;
+static unsigned int proteccion =  9;
 int serial = 0;
+int Paro = 0;
 int Sw1 = 0;
 int Sw2 = 0;
 int Externa = 0;
@@ -15,6 +17,7 @@ int Giro2 = 0;
 int Proteccion = 0;
 void setup() {
   BTSerial.begin(9600);//Inicializar comunicacion
+  pinMode(paro, INPUT);
   pinMode(sw1, INPUT);
   pinMode(sw2, INPUT);
   pinMode(externa, INPUT);
@@ -23,12 +26,15 @@ void setup() {
   pinMode(giro2, OUTPUT);
 }
 void loop() {
-  digitalWrite (giro2, Giro2);
-  digitalWrite(giro1, Giro1);
-  Sw1 = digitalRead(sw1);
-  Sw2 = digitalRead(sw2);
+    Paro = digitalRead(paro);
+   Sw1 = digitalRead(sw1);
+   Sw2 = digitalRead(sw2);
   Externa = digitalRead(externa);
-  while (BTSerial.available()) {    //pregunto sobre el dato del serial
+if (Paro == 1)
+{  Giro1 = 1;
+  Giro2= 1;
+}
+while (BTSerial.available()) {    //pregunto sobre el dato del serial
     char data = (char)BTSerial.read();
     if ( data == 'H')
     { digitalWrite(serial, !digitalRead(serial));
@@ -37,17 +43,19 @@ void loop() {
   if
   ((!serial and !Sw1) or (!Externa and !Sw1))
   {
-    Giro1 = 1;
+    Giro1 = 0;
   }
   else {
-    Giro1 = 0;
+    Giro1 = 1;
   }
   if
   ((serial and !Sw2) or (!Externa and !Sw2))
   {
-    Giro2 = 1;
-  }
-  else {
     Giro2 = 0;
   }
+  else {
+    Giro2 = 1;
+  }
+ digitalWrite (giro2, Giro2);
+ digitalWrite(giro1, Giro1);
 }
