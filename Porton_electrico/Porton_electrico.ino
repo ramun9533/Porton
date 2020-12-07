@@ -1,46 +1,44 @@
-//Este proyecto pretende sustituir la tarjeta electronica de un porton electrico, poderlo abrir por via bluetooth o manual a traves de botonera o por medio de radio control e incluso Wifi.
-
-
-#include <SoftwareSerial.h>                                //Se puede emular mas de un puerto serial
-SoftwareSerial BTSerial(10, 11);                          // RX | TX los pines que a usar
-char data = 0;                                           // para guardar dato recibido del bluetooth
-int arranque = 0;                                       // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "A"
-int enclavamiento = 0;                                 // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "A"
-int paro = 0;                                         // boton de paro el cual solo se uso al inicio del proyecto, pero se deja para ver la posibilidad de usarlo de nuevo en alguna  mejora
-int estado = 0;                                      // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "A"
-int reversible = 0;                                 // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "B"
-int areversible = 0;                 // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "B"
-int restado = 0;                    // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "B"
-int renclavamiento = 0;            // esta variable la uso para guardar un dato de las entradas y poder hacer la logica del programa giro "B"
-int w = 0;                        //entrada retro de serial y otra
-static unsigned int  serial = 12; //modificar para incluir en la variable
-static unsigned int PinArranque = 2; //configurar entradas digitales
-static unsigned int PinParo = 3;  //configurar entradas digitales
-static unsigned int Pinreversible = 4;  //configurar entradas digitales
-static unsigned int Pinw = 5;  //configurar entradas digitales
-static unsigned int Pinestado = 7; //configurar entradas digitales
-static unsigned int Pinrestado = 8; //configurar entradas digitales
-static unsigned int Pinprot = 9; //configurar entradas digitales
-void setup () {
+#include <SoftwareSerial.h>
+SoftwareSerial BTSerial(10, 11);
+static unsigned int paro = 3;
+static unsigned int sw1 = 2;
+static unsigned int sw2 = 4;
+static unsigned int externa = 5;
+static unsigned int giro1 = 7 ;
+static unsigned int giro2 = 8 ;
+static unsigned int proteccion =  9;
+int serial = 0;
+int Sw1 = 0;
+int Sw2 = 0;
+int Externa = 0;
+int Paro = 0;
+int Giro1 = 0;
+int Giro2 = 0;
+int Proteccion = 0;
+void setup() {
 
   BTSerial.begin(9600);//Inicializar comunicacion
-  digitalWrite (Pinprot, HIGH); // configuracion de pines
-  pinMode(PinArranque, INPUT);
-  pinMode(PinParo, INPUT);
-  pinMode(Pinreversible, INPUT);
-  pinMode(Pinw, INPUT); //variable que se usaria para arrenques externos
-  pinMode(Pinprot, OUTPUT); //pin que se pretende usar ciomo proteccion al medir ameraje alto
-  pinMode(serial, OUTPUT); // se usa para para la salida digital del serial, pero tambien se usara para bloquear nivel hardware, se puede mejorar
-  delay (1000);
-  digitalWrite (Pinprot, LOW);
-  pinMode(Pinestado, OUTPUT); // pin de salida giro "A"
-  pinMode(Pinrestado, OUTPUT);// pin de salida giro "B"
+  pinMode(paro, INPUT);
+  pinMode(sw1, INPUT);
+  pinMode(sw2, INPUT);
+  pinMode(externa, INPUT);
+  pinMode(giro1, OUTPUT);
+  pinMode(proteccion, OUTPUT);
+  pinMode(giro2, OUTPUT);
 }
-void loop () {
-  arranque = digitalRead(PinArranque); //veo los pines de entrada
-  paro = digitalRead(PinParo);
-  reversible = digitalRead(Pinreversible);
-  w = digitalRead(Pinw);
+
+void loop() {
+  Paro = digitalRead(paro);
+  Sw1 = digitalRead(sw1);
+  Sw2 = digitalRead(sw2);
+  Externa = digitalRead(externa);
+
+  if (Paro == 1)
+  {
+    Giro1 = 1;
+    Giro1 = 1;
+  }
+
 
   while (BTSerial.available()) {    //pregunto sobre el dato del serial
     char data = (char)BTSerial.read();
@@ -48,81 +46,23 @@ void loop () {
     { digitalWrite(serial, !digitalRead(serial));
     }
   }
-
-  if (paro == HIGH) { //funcion de paro
-    digitalWrite (Pinrestado, HIGH);
-    digitalWrite (Pinestado, HIGH);
-    restado = 0;
-    estado = 0;
-  } delay (8);
-
-  enclavamiento = estado; //funcion de activar giro "A"
-  if (arranque == HIGH and w == HIGH) {
-    estado = 1;
-    restado = 0;
+  if
+  ((!serial and !Sw1) or (!Externa and !Sw1))
+  {
+    Giro1 = 0;
   }
-
-  if (arranque == HIGH and serial == HIGH) { // salida usando con la logica de datos serial
-
-    estado = 1;
-    restado = 0;
-  }
-
-  if (estado == HIGH) { // giro "A" con proteccion de timer por si hay atoramiento en porton
-    digitalWrite (Pinestado, LOW);
-    digitalWrite (Pinrestado, HIGH);
-    delay (10000);
-    estado = 0;
-  }
-
   else {
-
-    digitalWrite (Pinestado, HIGH);
-
+    Giro1 = 1;
   }
-  digitalWrite (Pinestado, HIGH);
-  digitalWrite (Pinrestado, HIGH);
-
-  if (paro == HIGH) { // activando el paro general
-    estado = 0;
-    restado = 0;
-    digitalWrite (Pinrestado, HIGH);
-    digitalWrite (Pinestado, HIGH);
+  if
+  ((serial and !Sw2) or (!Externa and !Sw2))
+  {
+    Giro2 = 0;
   }
-  renclavamiento = restado;
-  if (reversible == HIGH and w == LOW ) { //activando el giro "B"
-    restado = 1;
-    estado = 0;
-  }
-
-  if (restado == HIGH) {        // gito "B" con proteccion de timer por si hay atoramiento en porton
-    digitalWrite (Pinrestado, LOW);
-    digitalWrite (Pinestado, HIGH);
-    delay (10000);
-    restado = 0;
-  }
-
   else {
-
-    digitalWrite (Pinrestado, HIGH); // regreso a desactivar la salida, latarjete del proyecto se activa con niveles bajos
+    Giro2 = 1;
 
   }
-
-  digitalWrite (Pinestado, HIGH);
-  digitalWrite (Pinrestado, HIGH);
-
-  if (paro == HIGH) {                   //funcion de paro 2
-    digitalWrite (Pinrestado, HIGH);
-    digitalWrite (Pinestado, HIGH);
-    restado = 0;
-    estado = 0;
-  }
-  if (reversible == HIGH and w == HIGH) {
-    estado = 0;
-    restado = 0;
-  }
-  if (arranque == HIGH and w == LOW) {
-    estado = 0;
-    restado = 0;
-  }
+  digitalWrite (giro2, Giro2);
+  digitalWrite(giro1, Giro1);
 }
