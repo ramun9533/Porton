@@ -49,7 +49,7 @@ while (BTSerial.available()) {    //pregunto sobre serial
     Giro1 = 1;
   }
   if
-  ((serial and !Sw2) or (!Externa and !Sw2))
+  ((serial and !Sw2) or (Externa and !Sw2))
   {
     Giro2 = 0;
   }
