@@ -34,7 +34,7 @@ if (Paro == 1)
 {  Giro1 = 1;
   Giro2= 1;
 }
-while (BTSerial.available()) {    //pregunto sobre el dato del serial
+while (BTSerial.available()) {    //pregunto sobre serial
     char data = (char)BTSerial.read();
     if ( data == 'H')
     { digitalWrite(serial, !digitalRead(serial));
