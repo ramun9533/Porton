@@ -7,6 +7,10 @@ static unsigned int externa = 5;
 static unsigned int giro1 = 7 ;
 static unsigned int giro2 = 8 ;
 static unsigned int proteccion =  9;
+static unsigned int selec = 6 ;
+static unsigned int selec1 = 12 ;
+int Selec1 = 0;
+int Selec = 0;
 int serial = 0;
 int Paro = 0;
 int Sw1 = 0;
@@ -17,6 +21,8 @@ int Giro2 = 0;
 int Proteccion = 0;
 void setup() {
   BTSerial.begin(9600);//Inicializar comunicacion
+ pinMode(selec1, INPUT); 
+  pinMode(selec, INPUT);
   pinMode(paro, INPUT);
   pinMode(sw1, INPUT);
   pinMode(sw2, INPUT);
@@ -24,38 +30,57 @@ void setup() {
   pinMode(giro1, OUTPUT);
   pinMode(proteccion, OUTPUT);
   pinMode(giro2, OUTPUT);
+  digitalWrite (proteccion, LOW);
 }
 void loop() {
-    Paro = digitalRead(paro);
-   Sw1 = digitalRead(sw1);
-   Sw2 = digitalRead(sw2);
+  Selec1 = digitalRead(selec1);
+  Selec = digitalRead(selec);
+  Paro = digitalRead(paro);
+  Sw1 = digitalRead(sw1);
+  Sw2 = digitalRead(sw2);
   Externa = digitalRead(externa);
-if (Paro == 1)
-{  Giro1 = 1;
-  Giro2= 1;
-}
-while (BTSerial.available()) {    //pregunto sobre serial
+  if (Paro == 1)
+  {
+    digitalWrite (proteccion, HIGH);
+  } delay (10);
+  
+ while (BTSerial.available()) {    //pregunto sobre serial
     char data = (char)BTSerial.read();
-    if ( data == 'H')
-    { digitalWrite(serial, !digitalRead(serial));
-    }
+   if ( data == 'H')
+   { digitalWrite(serial, !digitalRead(serial));
+   }
   }
   if
-  ((!serial and !Sw1) or (!Externa and !Sw1))
+  (!Selec1 and ((Selec and !serial and !Sw1) or ( !Selec and !Externa and !Sw1)))
+  //(!Externa and !Sw1) 
   {
     Giro1 = 0;
   }
   else {
     Giro1 = 1;
   }
-  if
-  ((serial and !Sw2) or (Externa and !Sw2))
+  if (!Selec1 and ((Selec and serial and !Sw2) or (!Selec and Externa and !Sw2)))
+  //( Externa and !Sw2 )  
   {
     Giro2 = 0;
-  }
+  } 
   else {
     Giro2 = 1;
   }
- digitalWrite (giro2, Giro2);
- digitalWrite(giro1, Giro1);
+ 
+if (Selec1 and Sw1)
+
+{
+  Giro1 =0;
+  }
+if (Selec1 and Sw2)
+
+{
+  Giro2 =0;
+  }
+
+  digitalWrite (giro2, Giro2);
+  digitalWrite(giro1, Giro1);
+
+   
 }
