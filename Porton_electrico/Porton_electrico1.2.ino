@@ -47,11 +47,11 @@ void loop() {
  while (BTSerial.available()) {    //pregunto sobre serial
     char data = (char)BTSerial.read();
    if ( data == 'H')
-   { digitalWrite(serial, !digitalRead(serial));
+   { digitalWrite(serial, !digitalRead(serial)); // invierto de 0 a 1 o de 1 a 0
    }
   }
   if
-  (!Selec1 and ((Selec and !serial and !Sw1) or ( !Selec and !Externa and !Sw1)))
+  (!Selec1 and ((Selec and !serial and !Sw1) or ( !Selec and !Externa and !Sw1))) //lógica de selector en posición para usar el Bluetooth y switch límite #1
   //(!Externa and !Sw1) 
   {
     Giro1 = 0;
@@ -59,7 +59,8 @@ void loop() {
   else {
     Giro1 = 1;
   }
-  if (!Selec1 and ((Selec and serial and !Sw2) or (!Selec and Externa and !Sw2)))
+  if (!Selec1 and ((Selec and serial and !Sw2) or (!Selec and Externa and !Sw2))) //lógica de selector en posición para usar el Bluetooth y switch límite #2
+  //(!Externa and !Sw1) 
   //( Externa and !Sw2 )  
   {
     Giro2 = 0;
@@ -68,12 +69,13 @@ void loop() {
     Giro2 = 1;
   }
  
-if (Selec1 and Sw1)
+if (Selec1 and Sw1)  //posición selector para forzar Giro1
 
 {
   Giro1 =0;
   }
-if (Selec1 and Sw2)
+if (Selec1 and Sw2) //posición selector para forzar Giro2
+
 
 {
   Giro2 =0;
