@@ -39,7 +39,7 @@ void loop() {
   Sw1 = digitalRead(sw1);
   Sw2 = digitalRead(sw2);
   Externa = digitalRead(externa);
-  if (Paro == 1)
+  if (Paro == 1) // sentencia para el paro de emergencia
   {
     digitalWrite (proteccion, HIGH);
   } delay (10);
