@@ -1,14 +1,14 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);
-static unsigned int sw1 = 2;
-static unsigned int paro = 3;
-static unsigned int sw2 = 4;
-static unsigned int externa = 5;
-static unsigned int giro1 = 7 ;
-static unsigned int giro2 = 8 ;
-static unsigned int proteccion =  9;
-static unsigned int selec = 6 ;
-static unsigned int selec1 = 12 ;
+static unsigned int sw1 = 2; //switch límite del porton
+static unsigned int paro = 3; // boton de paro de emergencia
+static unsigned int sw2 = 4; //switch límite del porton
+static unsigned int externa = 5; // accionamiento externo con otra señal, que puede ser de 110 VCA
+static unsigned int giro1 = 7 ; // salida de giro
+static unsigned int giro2 = 8 ; // salida de giro
+static unsigned int proteccion =  9; // salida de protección, y para futuras mejoras
+static unsigned int selec = 6 ; // opción 1 de seleccionar con que modo operará el sistema
+static unsigned int selec1 = 12 ; // opción 2 de seleccionar con que modo operará el sistema
 int Selec1 = 0;
 int Selec = 0;
 int serial = 0;
